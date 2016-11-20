@@ -11,6 +11,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.ws.rs.Encoded;
 
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
@@ -31,6 +32,10 @@ public class Pessoa {
 	private Sexo sexo;
 	@Enumerated(EnumType.STRING)
 	private Relacionamento relacionamento;
+	
+	@Encoded
+	private Endereco endereco;
+	
 	
 	public Pessoa() {
 	}
