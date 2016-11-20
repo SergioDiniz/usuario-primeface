@@ -11,10 +11,10 @@ public class Usuario  extends Pessoa{
 
 	private String nickname;
 	
-	@ManyToMany(mappedBy="usuario")
+	@OneToMany(mappedBy="usuario")
 	private List<Topico> topicos;
 	
-	@ManyToMany(mappedBy="usuario")
+	@OneToMany(mappedBy="usuario")
 	private List<Comentario> comentario;
 	
 	public Usuario() {
@@ -27,6 +27,22 @@ public class Usuario  extends Pessoa{
 
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+
+	public List<Topico> getTopicos() {
+		return topicos;
+	}
+
+	public void setTopicos(List<Topico> topicos) {
+		this.topicos = topicos;
+	}
+
+	public List<Comentario> getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(List<Comentario> comentario) {
+		this.comentario = comentario;
 	}
 	
 	

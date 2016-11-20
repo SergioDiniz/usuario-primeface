@@ -1,5 +1,7 @@
 package br.com.beans;
 
+import java.util.Calendar;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.primefaces.component.calendar.Calendar;
+
 
 @Entity
 public class Comentario {
@@ -31,6 +33,48 @@ public class Comentario {
 	public Comentario() {
 		// TODO Auto-generated constructor stub
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getConteudo() {
+		return conteudo;
+	}
+
+	public void setConteudo(String conteudo) {
+		this.conteudo = conteudo;
+	}
+
+	public Calendar getDataCriacao() {
+		return dataCriacao;
+	}
+
+	public void setDataCriacao(Calendar dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Topico getTopico() {
+		return topico;
+	}
+
+	public void setTopico(Topico topico) {
+		this.topico = topico;
+	}
+	
+	
 	
 	
 }

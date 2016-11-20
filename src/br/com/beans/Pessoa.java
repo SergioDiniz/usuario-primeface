@@ -1,5 +1,7 @@
 package br.com.beans;
 
+import java.util.Calendar;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -23,7 +25,7 @@ public class Pessoa {
 	private String nome;
 	private String foto;
 	@Temporal(TemporalType.DATE)
-	private String dataNascimento;
+	private Calendar dataNascimento;
 	@Column(nullable=false, unique=true)
 	private String email;
 	@Column(nullable=false)
@@ -64,11 +66,12 @@ public class Pessoa {
 		this.foto = foto;
 	}
 
-	public String getDataNascimento() {
+
+	public Calendar getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(String dataNascimento) {
+	public void setDataNascimento(Calendar dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
@@ -102,6 +105,14 @@ public class Pessoa {
 
 	public void setRelacionamento(Relacionamento relacionamento) {
 		this.relacionamento = relacionamento;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 	
 	

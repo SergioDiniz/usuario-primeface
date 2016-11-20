@@ -1,5 +1,6 @@
 package br.com.beans;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -14,7 +15,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.primefaces.component.calendar.Calendar;
 
 @Entity
 public class Topico {
@@ -30,7 +30,7 @@ public class Topico {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataUltimaPostagem;
 	
-	@ManyToMany
+	@ManyToOne
 	private Usuario usuario;
 	
 	@OneToMany(mappedBy="topico")
@@ -39,5 +39,71 @@ public class Topico {
 	public Topico() {
 		// TODO Auto-generated constructor stub
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public EstadoTopico getEstadoTopico() {
+		return estadoTopico;
+	}
+
+	public void setEstadoTopico(EstadoTopico estadoTopico) {
+		this.estadoTopico = estadoTopico;
+	}
+
+	public Calendar getDataCriacao() {
+		return dataCriacao;
+	}
+
+	public void setDataCriacao(Calendar dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
+
+	public Calendar getDataUltimaPostagem() {
+		return dataUltimaPostagem;
+	}
+
+	public void setDataUltimaPostagem(Calendar dataUltimaPostagem) {
+		this.dataUltimaPostagem = dataUltimaPostagem;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public List<Comentario> getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(List<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
+	
+	
 	
 }
