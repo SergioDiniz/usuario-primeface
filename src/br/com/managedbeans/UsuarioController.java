@@ -7,6 +7,9 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import br.com.beans.Endereco;
 import br.com.beans.Usuario;
@@ -35,6 +38,21 @@ public class UsuarioController implements Serializable{
 		usuario.setDataNascimento(Calendar.getInstance());
 		usuadioDAO.addUsuario(usuario);
 		usuario = new Usuario();
+		return "/index.xhtml?faces-redirect=true";
+	}
+	
+	public String login(){
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		HttpSession session = request.getSession(true);
+		session.setAttribute("teste", "Ola Sessão");
+		return "/index.xhtml?faces-redirect=true";
+	}
+	
+	public String logout(){
+		
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		request.getSession().invalidate();
+		
 		return "/index.xhtml?faces-redirect=true";
 	}
 	

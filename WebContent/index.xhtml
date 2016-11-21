@@ -12,9 +12,11 @@
 	<ui:include src="/menu.xhtml"></ui:include>
 
 	<h1>Ola</h1>
+	<h:outputText value="#{teste}" ></h:outputText>
 	
 	<h:form>
-		<h:commandButton value="Cadastrar!" action="#{usuarioController.addUsuario()}"></h:commandButton>
+		<h:commandButton value="Entrar" action="#{usuarioController.login()}"></h:commandButton>
+		<h:commandButton value="Sair" action="#{usuarioController.logout()}"></h:commandButton>
 	</h:form>
 	
 </h:body>

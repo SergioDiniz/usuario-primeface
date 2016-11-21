@@ -6,4 +6,6 @@ public interface UsuarioIT {
 
 	void addUsuario(Usuario usuario);
 	
+	Usuario loginUsuario(String email, String senha);
+	
 }
