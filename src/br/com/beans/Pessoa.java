@@ -24,7 +24,7 @@ public class Pessoa {
 	private Long id;
 	@Column(nullable=false)
 	private String nome;
-	private String foto;
+	private String foto = "padrao.png";
 	@Temporal(TemporalType.DATE)
 	private Calendar dataNascimento;
 	@Column(nullable=false, unique=true)
