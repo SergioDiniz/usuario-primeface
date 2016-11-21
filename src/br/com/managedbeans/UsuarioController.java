@@ -42,10 +42,19 @@ public class UsuarioController implements Serializable{
 	}
 	
 	public String login(){
+		
+		Usuario u = usuadioDAO.loginUsuario(this.usuario.getEmail(), this.usuario.getSenha());
 		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
 		HttpSession session = request.getSession(true);
-		session.setAttribute("teste", "Ola Sessão");
-		return "/index.xhtml?faces-redirect=true";
+		
+		if(u != null) {
+			session.setAttribute("usuario", u);
+			return "/app/index.xhtml?faces-redirect=true";
+		}
+
+		session.setAttribute("erroLoginMessagem", "Não foi possivel Realizar o Login!");
+		return "/login.xhtml?faces-redirect=true";
+		
 	}
 	
 	public String logout(){

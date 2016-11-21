@@ -34,7 +34,7 @@ public class UsuarioDAO implements UsuarioIT {
 		query.setParameter("senha", senha);
 		List<Usuario> u = query.getResultList();
 		
-		if(u.size() > 0){
+		if(u.size() >= 1){
 			return u.get(0);
 		}
 		
