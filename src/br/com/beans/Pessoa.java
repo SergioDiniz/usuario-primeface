@@ -3,6 +3,7 @@ package br.com.beans;
 import java.util.Calendar;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -35,7 +36,7 @@ public class Pessoa {
 	@Enumerated(EnumType.STRING)
 	private Relacionamento relacionamento;
 	
-	@Encoded
+	@Embedded
 	private Endereco endereco;
 	
 	
