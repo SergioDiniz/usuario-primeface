@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Insert title here</title>
+</h:head>
+<h:body>
+
+	<ui:include src="/menu.xhtml"></ui:include>
+
+	<div class="col-lg-offset-3 col-lg-6">
+	<br />
+	<br />
+		<h1 class="text-center">Login de Usuário</h1>
+		<br />
+		<hr/>
+		<br />
+		<br />
+	</div>
+
+	<div class="col-lg-offset-4 col-lg-4">
+		<h:form>
+			<div class="form-group">
+				<p:outputLabel for="email" value="Email: "></p:outputLabel>
+				<p:inputText styleClass="form-control input-lg" id="email"
+					required="true" value="#{usuarioController.usuario.email}">
+				</p:inputText>
+				<p:message for="email"/>
+			</div>
+			
+			<div class="form-group">
+				<p:outputLabel for="senha" value="Senha: "></p:outputLabel>
+				<p:password styleClass="form-control input-lg" id="senha" required="true"
+					value="#{usuarioController.usuario.senha}">
+					<f:validateLength minimum="6" ></f:validateLength>
+				</p:password>
+				<p:message for="senha"/>
+			</div>
+			
+			<div class="form-group">
+				<h:commandButton value="Logar" styleClass="btn btn-lg btn-info btn-block" 
+					action="#{usuarioController.login()}"></h:commandButton>
+			</div>
+		</h:form>
+	</div>
+
+
+</h:body>
+</html>

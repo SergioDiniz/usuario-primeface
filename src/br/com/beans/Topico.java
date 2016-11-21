@@ -3,6 +3,7 @@ package br.com.beans;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.eclipse.persistence.jpa.config.Cascade;
 
 
 @Entity
@@ -33,7 +36,7 @@ public class Topico {
 	@ManyToOne
 	private Usuario usuario;
 	
-	@OneToMany(mappedBy="topico")
+	@OneToMany(mappedBy="topico", cascade = CascadeType.ALL)
 	private List<Comentario> comentarios;
 	
 	public Topico() {
