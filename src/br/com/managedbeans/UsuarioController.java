@@ -44,26 +44,42 @@ public class UsuarioController implements Serializable{
 	public String login(){
 		
 		Usuario u = usuadioDAO.loginUsuario(this.usuario.getEmail(), this.usuario.getSenha());
-		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-		HttpSession session = request.getSession(true);
 		
 		if(u != null) {
-			session.setAttribute("usuario", u);
-			session.removeAttribute("erroLoginMessagem");
+			getSession().setAttribute("usuarioSession", u);
+			getSession().removeAttribute("erroLoginMessagem");
 			return "/app/index.xhtml?faces-redirect=true";
 		}
 
-		session.setAttribute("erroLoginMessagem", "Não foi possivel Realizar o Login!");
+		getSession().setAttribute("erroLoginMessagem", "Não foi possivel Realizar o Login!");
 		return "/login.xhtml?faces-redirect=true";
 		
 	}
 	
 	public String logout(){
-		
-		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-		request.getSession().invalidate();
+		getRequest().removeAttribute("usuarioSession");
+		getRequest().getSession().invalidate();
 		
 		return "/index.xhtml?faces-redirect=true";
+	}
+	
+	
+	public void atualizar(Usuario u){
+		System.out.println("usuario: " + u.getNome() + " - " + u.getId());
+		Usuario usuario = usuadioDAO.atualizar(u);
+		getSession().setAttribute("usuarioSession", usuario);
+	}
+	
+	
+	private HttpSession getSession(){
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		HttpSession session = request.getSession(true);
+		return session;
+	}
+	
+	private HttpServletRequest getRequest(){
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		return request;
 	}
 	
 	public Usuario getUsuario() {

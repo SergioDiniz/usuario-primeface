@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Forum - Configurações</title>
+</h:head>
+<h:body>
+
+	<ui:include src="/app/head.xhtml"></ui:include>
+	<ui:include src="/app/menu.xhtml"></ui:include>
+
+	<div class="container">
+		<div class="col-lg-12">
+			<h1 class="text-center">Novo Cadastro de Usuário</h1>
+			<br />
+		</div>
+
+		<div class="col-lg-offset-3 col-lg-6">
+			<h:form>
+
+				<div class="form-group">
+					<p:outputLabel value="Nome: " for="nome"></p:outputLabel>
+					<p:inputText value="#{usuarioSession.nome}" id="nome" required="true"
+						styleClass="form-control input-lg">
+						<f:validateLength minimum="6"></f:validateLength>
+					</p:inputText>
+				</div>
+
+				<div class="form-group">
+					<p:outputLabel value="Email: " for="email"></p:outputLabel>
+					<p:inputText value="#{usuarioSession.email}" id="email" required="true"
+						styleClass="form-control input-lg">
+						<f:validateLength minimum="6"></f:validateLength>
+					</p:inputText>
+				</div>
+
+				<div class="form-group">
+					<p:outputLabel value="Senha: " for="senha"></p:outputLabel>
+					<p:password value="#{usuarioSession.senha}" id="senha" required="true" redisplay="true"
+						styleClass="form-control input-lg">
+						<f:validateLength minimum="6"></f:validateLength>
+					</p:password>
+				</div>
+
+				<div class="form-group">
+					<p:outputLabel value="Data de Nascimento: " for="nascimento"></p:outputLabel>
+					<p:inputMask id="nascimento" mask="99/99/9999" 
+						styleClass="form-control input-lg" />
+				</div>
+
+				<div class="form-group">
+					<p:outputLabel value="Sexo: " for="sexo"></p:outputLabel>
+					<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+						<p:selectOneRadio id="sexo" value="#{usuarioSession.sexo}">
+							<f:selectItem itemLabel="&nbsp; Masculino &nbsp;&nbsp;"
+								itemValue="MASCULINO" />
+							<f:selectItem itemLabel="&nbsp; Feminino &nbsp;&nbsp;"
+								itemValue="FEMININO" />
+						</p:selectOneRadio>
+					</h:panelGrid>
+				</div>
+
+				<div class="form-group">
+					<p:outputLabel value="Relacionamento: " for="relacionamento"></p:outputLabel>
+					<h:panelGrid columns="2" style="margin-bottom:10px"
+						cellpadding="50">
+						<p:selectOneRadio id="relacionamento" value="#{usuarioSession.relacionamento}"
+							layout="grid" columns="2">
+							<f:selectItem itemLabel="&nbsp; Solteiro &nbsp;&nbsp;"
+								itemValue="SOLTEIRO" />
+							<f:selectItem itemLabel="&nbsp; Casado &nbsp;&nbsp;"
+								itemValue="CASADO" />
+							<f:selectItem itemLabel="&nbsp; Divorciado &nbsp;&nbsp;"
+								itemValue="DIVORCIADO" />
+							<f:selectItem itemLabel="&nbsp; Viuvo &nbsp;&nbsp;"
+								itemValue="VIUVO" />
+						</p:selectOneRadio>
+					</h:panelGrid>
+				</div>
+
+				<hr></hr>
+
+				<b>Informações de Endereço:</b>
+
+				<div class="form-group">
+					<p:outputLabel value="Estado: " for="estado"></p:outputLabel>
+					<p:inputText value="#{usuarioSession.endereco.estado}" id="estado"
+						styleClass="form-control input-lg">
+					</p:inputText>
+				</div>
+
+				<div class="form-group">
+					<p:outputLabel value="Cidade: " for="cidade"></p:outputLabel>
+					<p:inputText value="#{usuarioSession.endereco.cidade}" id="cidade"
+						styleClass="form-control input-lg">
+					</p:inputText>
+				</div>
+
+				<div class="form-group">
+					<p:outputLabel value="Rua: " for="rua"></p:outputLabel>
+					<p:inputText value="#{usuarioSession.endereco.rua}" id="rua" styleClass="form-control input-lg">
+					</p:inputText>
+				</div>
+
+				<div class="form-group">
+					<p:outputLabel value="Complemento: " for="complemento"></p:outputLabel>
+					<p:inputText value="#{usuarioSession.endereco.complemento}" id="complemento"
+						styleClass="form-control input-lg">
+					</p:inputText>
+				</div>
+
+				<div class="form-group">
+					<br />
+					<h:commandButton value="Cadastrar" action="#{usuarioController.atualizar(usuarioSession)}"
+						styleClass="btn btn-primary btn-lg"></h:commandButton>
+				</div>
+
+			</h:form>
+			<br /> <br />
+		</div>
+
+	</div>
+</h:body>
+</html>

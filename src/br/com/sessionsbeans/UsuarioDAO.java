@@ -41,4 +41,11 @@ public class UsuarioDAO implements UsuarioIT {
 		return null;
 	}
 
+	@Override
+	public Usuario atualizar(Usuario usuario) {
+		em.merge(usuario);
+		Usuario u = em.find(Usuario.class, usuario.getId());
+		return u;
+	}
+
 }

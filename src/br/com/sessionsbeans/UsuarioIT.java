@@ -8,4 +8,6 @@ public interface UsuarioIT {
 	
 	Usuario loginUsuario(String email, String senha);
 	
+	Usuario atualizar(Usuario usuario);
+	
 }
