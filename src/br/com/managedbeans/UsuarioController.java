@@ -49,6 +49,7 @@ public class UsuarioController implements Serializable{
 		
 		if(u != null) {
 			session.setAttribute("usuario", u);
+			session.removeAttribute("erroLoginMessagem");
 			return "/app/index.xhtml?faces-redirect=true";
 		}
 
